@@ -79,7 +79,7 @@ The signed release APK will be generated at `out/OpencodeM-1.0.apk` and copied t
 
 OpencodeM is built upon the incredible work of the open-source community:
 
-- **[narezany](https://git.narez.xyz/narezany/MargyCode)** — Original creator of **MargyCode** (based on v0.1/v0.2). Thank you for pioneering running opencode on Android.
+- **[narezany](https://git.narez.xyz/narezany/MargyCode)** — Original creator of **MargyCode** (based on v0.1). Thank you for pioneering running opencode on Android.
 - **[Anomaly (opencode.ai)](https://github.com/anomalyco/opencode)** — Creators of **opencode**, the AI-powered development tool.
 - **[Oven-sh](https://bun.sh)** — For the **Bun** runtime.
 - **[ggml-org / PrismML](https://github.com/ggml-org/llama.cpp)** — For **llama.cpp** mobile LLM inference.
