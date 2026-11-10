@@ -84,7 +84,7 @@ cd opencodem
 
 OpencodeM создан благодаря труду разработчиков открытого ПО:
 
-- **[narezany](https://git.narez.xyz/narezany/MargyCode)** — Создатель оригинального проекта **MargyCode** (версии 0.1/0.2). Огромное спасибо за первоначальный порт opencode на Android.
+- **[narezany](https://git.narez.xyz/narezany/MargyCode)** — Создатель оригинального проекта **MargyCode** (версии 0.1). Огромное спасибо за первоначальный порт opencode на Android.
 - **[Anomaly (opencode.ai)](https://github.com/anomalyco/opencode)** — Создатели инструмента **opencode**.
 - **[Oven-sh](https://bun.sh)** — За **Bun** рантайм.
 - **[ggml-org / PrismML](https://github.com/ggml-org/llama.cpp)** — За мобильный движок инференса **llama.cpp**.
