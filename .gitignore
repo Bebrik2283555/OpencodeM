@@ -30,3 +30,6 @@ Thumbs.db
 *.bak
 *.tmp
 *.log
+
+# Local agent notes
+AGENTS.md

@@ -1,7 +1,5 @@
 <div align="center">
 
-<img src="assets/banner.png" alt="OpencodeM" width="640">
-
 **An AI client for Android with the real opencode inside.**
 The models, providers and agent of [opencode](https://opencode.ai), in an app made for a phone.
 
@@ -118,7 +116,6 @@ Any chat can be saved to a file in opencode's own transfer format and loaded bac
 | `engine/build-loader.sh` | musl's loader from Alpine and the wrapper for Claude Code |
 | `engine/build-linux.sh` | proot (Termux's fork) and the wrapper for Alpine |
 | `engine/build-llama.sh` | llama.cpp's server, in two builds picked by the phone's processor |
-| `assets/`, `art/` | the banner, the logo, and the scripts that draw them |
 
 The programs live in `jniLibs` under library names because that is the one place
 Android lets an app run programs from. Claude Code, Alpine and the models are not
