@@ -66,13 +66,13 @@ OpencodeM — продолжение **MargyCode**: тот же движок, р
 ### Сборка релизного APK
 В Windows (PowerShell):
 ```powershell
-cd margycode
+cd opencodem
 .\build.ps1
 ```
 
 В Linux / macOS:
 ```bash
-cd margycode
+cd opencodem
 ./build.sh
 ```
 

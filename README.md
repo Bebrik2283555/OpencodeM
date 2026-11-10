@@ -61,13 +61,13 @@ OpencodeM is a native Android client for [opencode](https://github.com/anomalyco
 ### Build Release APK
 On Windows:
 ```powershell
-cd margycode
+cd opencodem
 .\build.ps1
 ```
 
 On Linux / macOS:
 ```bash
-cd margycode
+cd opencodem
 ./build.sh
 ```
 

@@ -6,14 +6,14 @@ The old package `cat.narezany.margycode` is the previous build and still exists 
 
 ## Repository layout
 
-- `margycode/` — Android app (Kotlin, Jetpack Compose, Material 3).
+- `opencodem/` — Android app (Kotlin, Jetpack Compose, Material 3).
   - `app/src/main/kotlin/com/opencode/` — sources (`Brain.kt` is the state holder; `ui/` screens; `engine/` process wrappers).
   - `app/src/main/cpp/` — `libmargypty` (forkpty) for the terminal.
   - `app/src/main/assets/` — `app.md` (system prompt), `linux.md`, `android.md`, `terminal/` (xterm.js), `npx.mjs`, `phone-tools.mjs`, `margy-runtime.mjs` (opencode plugin).
   - `app/src/main/jniLibs/arm64-v8a/` — engine binaries (gitignored): `libopencode.so` (Bun+opencode), `libproot*.so`, `libldmusl.so`, `liblinux.so`, `libshell-runtime.so`, `liblinuxchroot.so`, `libllamaserver*.so`, `libclaude.so`.
   - `engine/` — build scripts for opencode, proot/Alpine, llama.cpp (Prism fork), runtime wrappers, host tests.
-- `TODO-MargyCode.md` — bugs/plans. `margycode/FIXES-0.2.x.md` — what was fixed and verified on device.
-- `OpencodeM-*.apk` at repo root — signed release builds. `margycode/keys/` — local signing key (private, gitignored).
+- `TODO-MargyCode.md` — bugs/plans. `opencodem/FIXES-0.2.x.md` — what was fixed and verified on device.
+- `OpencodeM-*.apk` at repo root — signed release builds. `opencodem/keys/` — local signing key (private, gitignored).
 - `opencode.json` at repo root only configures **this laptop's** opencode session (ponytail), not the app.
 
 ## Build and device
@@ -25,7 +25,7 @@ Windows host, no git repo. Paths:
 - JDK 17: `C:\Users\Alihan\.jdks\17\jdk-17.0.20+8`; Gradle 8.14.5 under `~/.gradle/wrapper/dists`.
 - NDK 28.2 / CMake 3.22.1 installed in the SDK.
 
-Build: `cd margycode; .\build.ps1` (runs JUnit, lint, release, signs with `keys/`). Output `out/OpencodeM-<version>.apk` (and root `OpencodeM-<version>.apk`).
+Build: `cd opencodem; .\build.ps1` (runs JUnit, lint, release, signs with `keys/`). Output `out/OpencodeM-<version>.apk` (and root `OpencodeM-<version>.apk`).
 Install: `adb -s 49933df7 install -r out/<apk>`. VersionCode must increase.
 
 **Encoding pitfall:** Windows PowerShell 5 reads `.kt/.md/.xml` as ANSI. Never `Set-Content`/`Get-Content -Raw | Set-Content`
@@ -111,7 +111,7 @@ Key API quirks already handled:
 
 ## Packaging, signing, migration
 
-- Same signing key as previous MargyCode builds (`margycode/keys`), but package changed to `com.opencode`.
+- Same signing key as previous MargyCode builds (`opencodem/keys`), but package changed to `com.opencode`.
   Android treats it as a **new app**; old app data is not visible/migrated automatically.
 - Migration approach used: copy old `files/` (home incl. DB, config, skills, models, linux, media, workspace, prefs)
   into new package as root, chown to new uid, then move sessions to the new workspace via `/api/session/{id}/move`.
@@ -130,8 +130,8 @@ Key API quirks already handled:
 
 ## Tests
 
-- Kotlin unit tests: `margycode/app/src/test/kotlin/com/opencode/...` (`:app:testDebugUnitTest` via build.ps1).
-- Host JS tests: `bun test` in `margycode/engine/` (18 tests); on a host with Node the same files run with `node --test`. The runtime plugin test forces `MARGY_PERMISSION_MODE=default` itself.
+- Kotlin unit tests: `opencodem/app/src/test/kotlin/com/opencode/...` (`:app:testDebugUnitTest` via build.ps1).
+- Host JS tests: `bun test` in `opencodem/engine/` (18 tests); on a host with Node the same files run with `node --test`. The runtime plugin test forces `MARGY_PERMISSION_MODE=default` itself.
 - Shell: `bash engine/test-runtime.sh`. Device checks are ad-hoc scripts in `%TEMP%\opencode\margy-*` (API via adb forward,
   password from `/proc/<engine pid>/environ`).
 - Always test on the phone after changes: engine boot, chat send, forms/queue, terminal, Alpine compound command,
