@@ -1,0 +1,13 @@
+diff --git a/packages/cli/script/build.ts b/packages/cli/script/build.ts
+index 80a67fe..52df219 100755
+--- a/packages/cli/script/build.ts
++++ b/packages/cli/script/build.ts
+@@ -231,6 +231,8 @@ export default { path: file, version: ${JSON.stringify(opencodePty.version)}, sh
+ }
+ 
+ async function compileExecutable(item: (typeof allTargets)[number]) {
++  // MargyCode: the official Bun for Android (bionic) instead of the glibc one.
++  if (process.env.MARGY_BUN_EXECUTABLE) return process.env.MARGY_BUN_EXECUTABLE
+   const release = process.env.BUN_COMPILE_RELEASE
+   if (!release) return
+ 

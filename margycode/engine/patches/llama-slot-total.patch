@@ -1,0 +1,11 @@
+diff --git a/tools/server/server-context.cpp b/tools/server/server-context.cpp
+--- a/tools/server/server-context.cpp
++++ b/tools/server/server-context.cpp
+@@ -818,6 +818,7 @@
+         if (ptask) {
+             res["id_task"] = ptask->id;
+             res["n_prompt_tokens"]           = (int32_t) prompt.tokens.size();
++            res["n_prompt_tokens_total"]     = ptask->n_tokens();
+             res["n_prompt_tokens_processed"] = stats.n_prompt_processed;
+             res["n_prompt_tokens_cache"]     = stats.n_prompt_cached;
+             res["params"] = ptask->params.to_json(only_metrics);

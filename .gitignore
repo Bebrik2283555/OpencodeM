@@ -1,0 +1,32 @@
+# Android / Gradle
+.gradle/
+build/
+app/build/
+local.properties
+*.iml
+.idea/
+.kotlin/
+.cxx/
+
+# Signing keys & secrets - NEVER COMMIT!
+keys/
+*.jks
+*.keystore
+*.pass
+
+# Build outputs (APKs are published in GitHub Releases)
+*.apk
+*.idsig
+out/
+/OpencodeM-src.zip
+
+# Upstream opencode source checkout (kept local or as submodule)
+opencode-dev/
+
+# OS and Editor junk
+.DS_Store
+Thumbs.db
+*.swp
+*.bak
+*.tmp
+*.log

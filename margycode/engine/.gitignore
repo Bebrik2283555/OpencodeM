@@ -1,0 +1,11 @@
+opencode/
+bun-android/
+bun-x64/
+dl/
+out/
+linux/proot/
+linux/pbuild/
+linux/talloc-*/
+linux/build/
+linux/*.tar.gz
+llama/

@@ -1,0 +1,25 @@
+<!doctype html><html><head><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<link rel="stylesheet" href="xterm.css"><style>
+html,body{height:100%;width:100%;margin:0;overflow:hidden;background:#101512}
+#terminal{position:fixed;top:0;left:0;right:0;bottom:0;padding:6px;box-sizing:border-box}
+.xterm{height:100%}
+</style></head>
+<body><div id="terminal"></div><script src="xterm.js"></script><script src="addon-fit.js"></script><script>
+const term = new Terminal({fontSize:13,convertEol:false,scrollback:5000,theme:{background:'#101512',foreground:'#dae5dd'}});
+const fit = new FitAddon.FitAddon();term.loadAddon(fit);term.open(document.getElementById('terminal'));
+window.__term=term;
+term.onData(data=>Android.input(data));
+function resize(){
+  try{
+    fit.fit();
+    Android.resize(term.cols,term.rows);
+    term.focus();
+  }catch(e){}
+}
+new ResizeObserver(()=>requestAnimationFrame(resize)).observe(document.getElementById('terminal'));
+window.addEventListener('load',()=>{resize();setTimeout(resize,250);setTimeout(resize,800)});
+window.receive=(text,reset)=>{if(reset)term.reset();term.write(text)};
+window.focusTerminal=()=>term.focus();
+window.colours=(bg,fg)=>{term.options.theme={background:bg,foreground:fg};document.body.style.background=bg;term.refresh(0,Math.max(0,term.rows-1))};
+requestAnimationFrame(resize);Android.ready();
+</script></body></html>
